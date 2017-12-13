@@ -177,6 +177,8 @@ resource "aws_instance" "server_3" {
   source_dest_check = false
   associate_public_ip_address = true
 
+
+
   tags {Name = "Server_3"}
 }
 
@@ -187,14 +189,15 @@ resource "aws_eip" "server_3_EIP" {
 
 /*
     Outputs
+    $(terraform output server1) // will result Public IP of Server1
 */
 
-output "Server1" {
-  value = "Server_1 -> ${aws_eip.server_1_EIP.public_ip}"
+output "server1" {
+  value = "${aws_eip.server_1_EIP.public_ip}"
 }
-output "Server2" {
-  value = "Server_1 -> ${aws_eip.server_2_EIP.public_ip}"
+output "server2" {
+  value = "${aws_eip.server_2_EIP.public_ip}"
 }
-output "Server3" {
-  value = "Server_3 -> ${aws_eip.server_3_EIP.public_ip}"
+output "server3" {
+  value = "${aws_eip.server_3_EIP.public_ip}"
 }
